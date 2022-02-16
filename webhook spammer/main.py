@@ -30,64 +30,93 @@ if DeleteWebhook == 'yes':
     print(Fore.GREEN + '[>]WebHooke Deleted')
 
 if DeleteWebhook == 'no':
-    SelectWhatSpam = input(Fore.CYAN + 'Do you wanna spam an Image or a Message or both of them ? ')
-    clear = system('cls')
+    ModifyWebHook = input(Fore.CYAN + 'Do yo wanna modify the WebHook ? ')
+    
+    if ModifyWebHook == 'yes':
+        with open('avatar.png', rb) as f:
+            img = f.read()
+        
+        Name = input('Insert a Name for WebHook Here: ')
+        clear = system('cls')
+        AvatarImage = input('Do you wanna change the avatar? ')
+        clear = system('cls')
+        
+        if AvatarImage == 'yes':
+            hook.modify(name = {Name}, avatar = img)
+            print(Fore.GREEN + '[>]WebHook Modified succefully')
+        
+        if AvatarImage == 'no':
+            hook.modify(name = {Name})
+            print(Fore.GREEN + '[>]WebHook Modified succefully')
 
-    if SelectWhatSpam == 'Image' or SelectWhatSpam == 'image':
-        print(Fore.RED + '[!]' + Fore.CYAN + 'Insert a discord image URL\n\nExample: https://cdn.discordapp.com/attachments/942836096126029827/943244337066705047/trasferimento.png')
-            
-        ImageToSpam = input('\n\nImage URL Here: ')
+    if ModifyWebHook == 'no':
+        SelectWhatSpam = input(Fore.CYAN + 'Do you wanna spam an Image or a Message or both of them ? ')
+        clear = system('cls')
 
-        # response = requests.get(ImageToSpam)   
-        # file = File(BytesIO(response.content), name = 'wow.png')
-
-        if not ImageToSpam.__contains__('https://cdn.discordapp.com/'):
-            clear = system('cls')
-            print(Fore.RED + '\n[!] Invalid URL!!')
-            sys.exit(Fore.GREEN + '\nPlease restart the program')
+        if SelectWhatSpam == 'Image' or SelectWhatSpam == 'image':
+            print(Fore.RED + '[!]' + Fore.CYAN + 'Insert a discord image URL\n\nExample: https://cdn.discordapp.com/attachments/942836096126029827/943244337066705047/trasferimento.png')
                 
-        while True:
-            hook.send(f"{ImageToSpam}")
-            print(Fore.GREEN + '[>]Sent')
+            ImageToSpam = input('\n\nImage URL Here: ')
 
-    elif SelectWhatSpam == 'Message' or SelectWhatSpam == 'message':
-        MessageToSpam = input(Fore.CYAN + 'What is the message which you want to spam ?  ')
-        clear = system('cls')
-        MentionEveryone = input('Do you wanna mention @everyone ?  ')
-        clear = system('cls')
-        
-        if MentionEveryone == 'yes':
+            # response = requests.get(ImageToSpam)   
+            # file = File(BytesIO(response.content), name = 'wow.png')
+
+            if not ImageToSpam.__contains__('https://cdn.discordapp.com/'):
+                clear = system('cls')
+                print(Fore.RED + '\n[!] Invalid URL!!')
+                sys.exit(Fore.GREEN + '\nPlease restart the program')
+                    
             while True:
-                hook.send(f"@everyone {MessageToSpam}")
-                print(Fore.RED + '[>]Sent')
-        if MentionEveryone == 'no':
-            while True:
-                hook.send(f"{MessageToSpam}")
+                hook.send(f"{ImageToSpam}")
                 print(Fore.GREEN + '[>]Sent')
 
-    elif SelectWhatSpam == 'Both of them' or 'both of them':
-        print(Fore.RED + '[!]' + Fore.CYAN + 'Insert a discord image URL\n\nExample: https://cdn.discordapp.com/attachments/942836096126029827/943244337066705047/trasferimento.png')
-            
-        ImageToSpam = input('\n\nImage URL Here: ')
-
-        # response = requests.get(ImageToSpam)   
-        # file = File(BytesIO(response.content), name = 'wow.png')
-
-        if not ImageToSpam.__contains__('https://cdn.discordapp.com/'):
+        elif SelectWhatSpam == 'Message' or SelectWhatSpam == 'message':
+            MessageToSpam = input(Fore.CYAN + 'What is the message which you want to spam ?  ')
             clear = system('cls')
-            print(Fore.RED + '\n[!] Invalid URL!!')
-            sys.exit(Fore.GREEN + '\nPlease restart the program')
-        
-        MessageToSpam = input('What is the message which you want to spam ?  ')
-        clear = system('cls')
-        MentionEveryone = input('Do you wanna mention @everyone ?  ')
-        clear = system('cls')
-        
-        if MentionEveryone == 'yes':
-            while True:
-                hook.send(f"@everyone {MessageToSpam}\n{ImageToSpam}")
-                print(Fore.GREEN + '[>]Sent')
-        if MentionEveryone == 'no':
-            while True:
-                hook.send(f"{MessageToSpam}\n{ImageToSpam}")
-                print(Fore.GREEN + '[>]Sent')
+            MentionEveryone = input('Do you wanna mention @everyone ?  ')
+            clear = system('cls')
+            MentionAnUser = input('Do you wanna mention a specific user? ')
+            clear = system('cls')
+            
+            if MentionEveryone == 'yes':
+                while True:
+                    hook.send(f"@everyone {MessageToSpam}")
+                    print(Fore.RED + '[>]Sent')
+            if MentionEveryone == 'no':
+                if MentionAnUser == 'yes':
+                    UserID = input('Inser User ID Here: ')
+                    while True:
+                        hook.send(f"{MessageToSpam} <@{UserID}>")
+                if MentionAnUser == 'no':
+                    while True:
+                        hook.send(f"{MessageToSpam}")
+                        print(Fore.GREEN + '[>]Sent')
+            
+                
+
+        elif SelectWhatSpam == 'Both of them' or 'both of them':
+            print(Fore.RED + '[!]' + Fore.CYAN + 'Insert a discord image URL\n\nExample: https://cdn.discordapp.com/attachments/942836096126029827/943244337066705047/trasferimento.png')
+                
+            ImageToSpam = input('\n\nImage URL Here: ')
+
+            # response = requests.get(ImageToSpam)   
+            # file = File(BytesIO(response.content), name = 'wow.png')
+
+            if not ImageToSpam.__contains__('https://cdn.discordapp.com/'):
+                clear = system('cls')
+                print(Fore.RED + '\n[!] Invalid URL!!')
+                sys.exit(Fore.GREEN + '\nPlease restart the program')
+            
+            MessageToSpam = input('What is the message which you want to spam ?  ')
+            clear = system('cls')
+            MentionEveryone = input('Do you wanna mention @everyone ?  ')
+            clear = system('cls')
+            
+            if MentionEveryone == 'yes':
+                while True:
+                    hook.send(f"@everyone {MessageToSpam}\n{ImageToSpam}")
+                    print(Fore.GREEN + '[>]Sent')
+            if MentionEveryone == 'no':
+                while True:
+                    hook.send(f"{MessageToSpam}\n{ImageToSpam}")
+                    print(Fore.GREEN + '[>]Sent')
