@@ -2,11 +2,19 @@ from os import system
 from time import sleep
 import sys
 from colorama import Fore
+from pystyle import *
 import tools.WebhookDestroyer.utilities.webhook as webhook
 
 def main():
     SelectWhatSpam = input(Fore.CYAN + 'Do you wanna spam an Image or a Message or both of them ? ')
     clear = system('cls')
+
+    if not SelectWhatSpam == 'Image' or not SelectWhatSpam == 'image' or not SelectWhatSpam == 'Message' or not SelectWhatSpam == 'message' or not SelectWhatSpam == 'Btoh of them' or not SelectWhatSpam == 'both of them':
+        print(Fore.RED + '[!] ' + Fore.CYAN + 'Invalid Selection!')
+        Write.Print('\nRestarting Program\nPlease Wait a few seconds', Colors.green)
+        sleep(3)
+        system('cls')
+        system('py main.py')
 
     if SelectWhatSpam == 'Image' or SelectWhatSpam == 'image':
             print(Fore.RED + '[!]' + Fore.CYAN + 'Insert a discord image URL\n\nExample: https://cdn.discordapp.com/attachments/942836096126029827/943244337066705047/trasferimento.png')

@@ -1,5 +1,3 @@
-from unicodedata import name
-import pyautogui
 from colorama import Fore, init
 from pystyle import *
 

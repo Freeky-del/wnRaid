@@ -3,13 +3,10 @@ from colorama import Fore
 from pystyle import *
 from time import sleep
 from os import system
-import sys
 import tools.WebhookDestroyer.main as webhookDestroyer
 import util.name as name
 import tools.TokenBruteForcer.main as tkn
-
-def main():
-    sys.stdout.write("\x1b]2;wnRaid by echqq00 & Freeky-del\x07")
+import tools.GuildJoiner.main as joiner
 
 def main():
     ToolSelection = """
@@ -17,7 +14,9 @@ def main():
 
         [2] Token BruteForcer
 
-        [3] Coming Soon...
+        [3] Guild Joiner
+
+        [4] Coming Soon...
 
         [99] Credits
     """
@@ -31,6 +30,9 @@ def main():
 
     if Selection == '2':
         tkn.main()
+
+    if Selection == '3':
+        joiner.main()
 
     if Selection == '99':
         webbrowser.open('https://github.com/Freeky-del')

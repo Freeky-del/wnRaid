@@ -1,1 +1,1 @@
-py main.py
+py wnRaid.py
