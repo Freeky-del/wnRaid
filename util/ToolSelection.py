@@ -7,6 +7,7 @@ import tools.WebhookDestroyer.main as webhookDestroyer
 import util.name as name
 import tools.TokenBruteForcer.main as tkn
 import tools.GuildJoiner.main as joiner
+import tools.GuildLeaver.main as leaver
 
 def main():
     ToolSelection = """
@@ -16,7 +17,9 @@ def main():
 
         [3] Guild Joiner
 
-        [4] Coming Soon...
+        [4] Guild Leaver
+
+        [5] Coming Soon...
 
         [99] Credits
     """
@@ -33,6 +36,9 @@ def main():
 
     if Selection == '3':
         joiner.main()
+    
+    if Selection == '4':
+        leaver.main()
 
     if Selection == '99':
         webbrowser.open('https://github.com/Freeky-del')

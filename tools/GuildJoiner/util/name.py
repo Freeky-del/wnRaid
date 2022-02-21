@@ -22,4 +22,4 @@ def main():
     
   """
 
-  print(Fore.MAGENTA + name)
+  print(Fore.MAGENTA + Center.XCenter(name))
